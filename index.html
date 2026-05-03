@@ -34,12 +34,52 @@
     </div>
   </div>
 
+  <!-- Game screen -->
   <div id="screen-game" class="screen">
-    <div class="game-content"><!-- filled by JS --></div>
+    <div class="game-layout">
+      <div class="scoreboard">
+        <div class="score-side">
+          <div class="score-label" id="score-player-name">PLAYER</div>
+          <div class="score-num score-x" id="score-x">0</div>
+        </div>
+        <div class="score-center">
+          <div class="round-label" id="round-label">ROUND 1 OF 5</div>
+        </div>
+        <div class="score-side">
+          <div class="score-label">AI</div>
+          <div class="score-num score-o" id="score-o">0</div>
+        </div>
+      </div>
+
+      <div class="turn-indicator" id="turn-indicator">YOUR TURN</div>
+
+      <div class="board-wrap">
+        <div class="board" id="board">
+          <div class="cell" data-index="0"></div>
+          <div class="cell" data-index="1"></div>
+          <div class="cell" data-index="2"></div>
+          <div class="cell" data-index="3"></div>
+          <div class="cell" data-index="4"></div>
+          <div class="cell" data-index="5"></div>
+          <div class="cell" data-index="6"></div>
+          <div class="cell" data-index="7"></div>
+          <div class="cell" data-index="8"></div>
+        </div>
+        <div class="round-overlay hidden" id="round-overlay">
+          <div class="round-result-text" id="round-result-text"></div>
+        </div>
+      </div>
+    </div>
   </div>
 
+  <!-- Game over screen -->
   <div id="screen-gameover" class="screen">
-    <div class="gameover-content"><!-- filled by JS --></div>
+    <div class="gameover-content">
+      <div class="gameover-title" id="gameover-title">VICTORY</div>
+      <div class="gameover-subtitle" id="gameover-subtitle"></div>
+      <div class="gameover-score" id="gameover-score">0 — 0</div>
+      <button id="btn-play-again" class="btn-play-again">PLAY AGAIN</button>
+    </div>
   </div>
 
   <script type="module" src="game.js"></script>
