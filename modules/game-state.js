@@ -44,6 +44,10 @@ export function resetRound(state) {
   return { ...state, board: Array(9).fill(null), currentTurn: 'X', roundActive: false };
 }
 
+export function startRound(state) {
+  return { ...state, roundActive: true };
+}
+
 export function resetGame() {
   return createGameState();
 }
