@@ -8,6 +8,7 @@ import {
   isDraw,
   makeMove,
   resetRound,
+  startRound,
 } from '../modules/game-state.js';
 
 test('WIN_COMBOS has exactly 8 combinations', () => {
@@ -101,4 +102,26 @@ test('resetRound resets currentTurn to X', () => {
   let state = makeMove(createGameState(), 0, 'X');
   const reset = resetRound(state);
   assert.equal(reset.currentTurn, 'X');
+});
+
+// startRound — ensures roundActive is true so the board accepts clicks
+test('startRound sets roundActive to true', () => {
+  const reset = resetRound(createGameState());
+  assert.equal(reset.roundActive, false, 'resetRound leaves roundActive false');
+  const active = startRound(reset);
+  assert.ok(active.roundActive);
+});
+
+test('startRound does not mutate the input state', () => {
+  const reset = resetRound(createGameState());
+  startRound(reset);
+  assert.equal(reset.roundActive, false);
+});
+
+test('startRound preserves board and scores', () => {
+  const state = { ...createGameState(), scores: { X: 1, O: 2 } };
+  const reset = resetRound(state);
+  const active = startRound(reset);
+  assert.deepEqual(active.board, Array(9).fill(null));
+  assert.deepEqual(active.scores, { X: 1, O: 2 });
 });

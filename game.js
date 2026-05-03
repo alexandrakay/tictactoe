@@ -1,5 +1,5 @@
 import { DEFAULT_DIFFICULTY, isValidDifficulty } from './modules/start-screen.js';
-import { createGameState, checkWinner, getWinnerCombo, isDraw, makeMove, resetRound, resetGame } from './modules/game-state.js';
+import { createGameState, checkWinner, getWinnerCombo, isDraw, makeMove, resetRound, startRound, resetGame } from './modules/game-state.js';
 import { getMove } from './modules/ai.js';
 
 // ── State ──
@@ -176,7 +176,7 @@ function handleCellClick(index) {
 }
 
 function nextRound() {
-  state = resetRound({ ...state, round: state.round + 1 });
+  state = startRound(resetRound({ ...state, round: state.round + 1 }));
   clearBoard();
   renderScoreboard();
   renderTurnIndicator();
